@@ -1,6 +1,7 @@
 import { logout } from './auth.js';
+import CONFIG from './config.js';
 
-const BASE_URL = 'http://127.0.0.1:8001/api';
+const BASE_URL = CONFIG.BASE_URL;
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org';
 
 /**
@@ -28,7 +29,7 @@ async function apiFetch(endpoint, options = {}) {
                 let messages = [];
                 for (const key in errorData) {
                     const value = errorData[key];
-                    if (Array.isArray(value)) { messages.push(`${key}: ${value.join(', ')}`); } 
+                    if (Array.isArray(value)) { messages.push(`${key}: ${value.join(', ')}`); }
                     else { messages.push(`${key}: ${value}`); }
                 }
                 if (messages.length > 0) { throw new Error(messages.join(' | ')); }
@@ -59,7 +60,7 @@ export default {
     confirmPasswordReset: (uid, token, password) => apiFetch('/auth/password-reset/confirm/', { method: 'POST', body: JSON.stringify({ uid, token, password }) }),
 
     // --- Methods for the external Nominatim API ---
-    
+
     /**
      * Fetches a human-readable address from a given latitude and longitude.
      * @param {number} lat - The latitude.

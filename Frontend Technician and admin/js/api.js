@@ -1,6 +1,7 @@
 import { logout } from './auth.js';
+import CONFIG from './config.js';
 
-const BASE_URL = 'http://127.0.0.1:8001/api';
+const BASE_URL = CONFIG.BASE_URL;
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org';
 
 /**
