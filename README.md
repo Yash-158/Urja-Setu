@@ -26,7 +26,7 @@ Instead of a traditional monolithic app, we built a **Headless Architecture**:
 
 | Citizen Reporting | AI Threat Detection | Admin Dashboard |
 |:---:|:---:|:---:|
-| <img src="screenshots/citizen_upload.png" width="250"> | <img src="screenshots/ai_analysis.png" width="250"> | <img src="screenshots/admin_map.png" width="250"> |
+| <img src="hackathon_photos/Citizen Portal 1.png" width="250"> | <img src="hackathon_photos\Admin Portal 1.png" width="250"> | <img src="hackathon_photos\Admin Portal 2.png" width="250"> |
 
 ## 🚀 How to Run locally
 
@@ -93,3 +93,23 @@ This project uses a decoupled architecture, so you need to run the Backend and F
 The system uses YOLOv8 to analyze uploaded images.
 - When a citizen uploads a report, the backend automatically triggers an analysis task (see `api/tasks.py`).
 - Ensure `ultralytics` is installed and the model weights (`api/best.pt`) are available.
+
+## 🏆 Achievements: SSIP Vikas Saptah Hackathon 2025
+
+We are proud to be **State Level Finalists** in the **Vikas Saptah Hackathon 2025 (6th Edition)**. 
+
+* **Rank**: Top 50 Teams selected out of **4000+ entries**.
+* **Scope**: A state-wide competition addressing real-world governance problems in Gujarat.
+
+### 🌟 The Team
+This project was built by a dedicated team of 6:
+* **Yash Shah**
+* **Anvi Panchal**
+* **Kavya Joshi**
+* **Shivansh Shah**
+* **Dhwani Jolapara**
+* **Chitra Bhate**
+
+### 📸 Hackathon Moments
+*(See instructions below on how to add your photos here)*
+![Team Working](hackathon_photos/Team.jpeg)
