@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Report {{ report.id }}</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        body { font-family: sans-serif; color: #333; font-size: 11px; }
+        .header { text-align: center; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 25px; }
+        .header h1 { color: #007bff; margin: 0; font-size: 24px;}
+        .header p { margin: 5px 0; color: #666; }
+        .summary-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .summary-table th, .summary-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .summary-table th { background-color: #f2f2f2; width: 30%; }
+        .section { margin-top: 25px; page-break-inside: avoid; }
+        .section h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; color: #0056b3; font-size: 16px; }
+        .issue-image { max-width: 80%; height: auto; margin-top: 10px; border: 1px solid #ddd; padding: 5px; display: block; margin-left: auto; margin-right: auto;}
+        .update-log { margin-top: 15px; }
+        .update-entry { border-left: 3px solid #007bff; padding-left: 15px; margin-bottom: 20px; page-break-inside: avoid; }
+        .update-entry p { margin: 5px 0; }
+        .update-entry .timestamp { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Urja Setu - Official Issue Report</h1>
+        <p>Gujarat Urja Vikas Nigam Ltd. (GUVNL)</p>
+    </div>
+
+    <table class="summary-table">
+        <tr><th>Report ID</th><td>URJA-{{ report.id|stringformat:"05d" }}</td></tr>
+        <tr><th>Status</th><td>{{ report.status }}</td></tr>
+        <tr><th>Submitted By</th><td>{{ report.citizen.profile.full_name }} ({{ report.citizen.email }})</td></tr>
+        <tr><th>Submitted On</th><td>{{ report.created_at|date:"F j, Y, P" }}</td></tr>
+        <tr><th>Assigned Technician</th><td>{{ report.assigned_technician.profile.full_name|default:"Not Assigned" }}</td></tr>
+        <tr><th>Resolved On</th><td>{% if report.resolved_at %}{{ report.resolved_at|date:"F j, Y, P" }}{% else %}Not Yet Resolved{% endif %}</td></tr>
+    </table>
+
+    <div class="section">
+        <h2>Issue Details</h2>
+        <p><strong>Category:</strong> {{ report.category|default:"N/A" }}</p>
+        <p><strong>Address:</strong> {{ report.address|default:"N/A" }}</p>
+        <p><strong>Description:</strong> {{ report.description }}</p>
+        {% if report.image %}
+            <p><strong>Visual Evidence Submitted by Citizen:</strong></p>
+            <img src="{{ report.image.path }}" class="issue-image">
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>AI Analysis</h2>
+        <p><strong>AI Classification:</strong> {{ report.ai_classification|default:"N/A" }}</p>
+        <p><strong>AI Priority:</strong> {{ report.ai_priority|default:"N/A" }}</p>
+        <p><strong>AI Suggestion:</strong> {{ report.ai_suggestion|default:"N/A" }}</p>
+    </div>
+
+    <div class="section">
+        <h2>Technician Action Log</h2>
+        <div class="update-log">
+            {% for update in report.reportupdate_set.all %}
+                <div class="update-entry">
+                    <p class="timestamp">{{ update.created_at|date:"F j, Y, P" }} by {{ update.technician.profile.full_name }}</p>
+                    <p><strong>Remark:</strong> "{{ update.remark }}"</p>
+                    {% if update.image %}
+                        <p><strong>Attached Image:</strong></p>
+                        <img src="{{ update.image.path }}" class="issue-image">
+                    {% endif %}
+                </div>
+            {% empty %}
+                <p>No updates from the technician yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

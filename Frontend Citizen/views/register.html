@@ -1,0 +1,28 @@
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>Create Citizen Account</h2>
+        <form id="register-form">
+            <div class="input-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required autocomplete="name" placeholder="e.g., Yash Shah">
+            </div>
+             <div class="input-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required autocomplete="tel" placeholder="e.g., 9876543210">
+            </div>
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="new-password" placeholder="••••••••••">
+            </div>
+            <button type="submit" class="btn">Register</button>
+            <p id="error-message" class="error-message"></p>
+        </form>
+        <div class="auth-box-footer">
+            <a href="#" id="login-link" class="link">Already have an account? Login</a>
+        </div>
+    </div>
+</div>
