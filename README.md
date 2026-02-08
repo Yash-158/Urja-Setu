@@ -26,7 +26,7 @@ Instead of a traditional monolithic app, we built a **Headless Architecture**:
 
 | Citizen Reporting | AI Threat Detection | Admin Dashboard |
 |:---:|:---:|:---:|
-| <img src="hackathon_photos/Citizen Portal 1.png" width="250"> | <img src="hackathon_photos\Admin Portal 1.png" width="250"> | <img src="hackathon_photos\Admin Portal 2.png" width="250"> |
+| <img src="hackathon_photos/Citizen Portal 1.png" width="250"> | <img src="hackathon_photos\Admin Portal 1.png" width="250"> | <img src="hackathon_photos\Admin portal 2.png" width="250"> |
 
 ## 🚀 How to Run locally
 
@@ -111,5 +111,5 @@ This project was built by a dedicated team of 6:
 * **Chitra Bhate**
 
 ### 📸 Hackathon Moments
-*(See instructions below on how to add your photos here)*
+
 ![Team Working](hackathon_photos/Team.jpeg)
